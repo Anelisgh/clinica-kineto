@@ -1,0 +1,119 @@
+---
+layout: layouts/base.njk
+title: Acasă
+---
+
+<section class="intro-section">
+    <img src="/assets/img/intro-image.png" alt="Copil fericit" class="intro-bg">
+    <div class="intro-overlay"></div>
+    <div class="intro-label">Kinetoterapie pediatrică · București</div>
+    <div class="intro-content">
+        <h1 class="intro-quote">Balance is not something you find, it's something you create</h1>
+        <p class="intro-author">― Jana Kingsford</p>
+    </div>
+</section>
+
+<section id="hero" class="hero-section">
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <h2>Bună, sunt Mihaela</h2>
+                <p>Îmi plac copiii și mai mult de atât îmi place să îi văd cum cresc armonios, cum își ating performanțele psihomotrice de zi cu zi, fără restricții sau dureri de orice fel!</p>
+                <p>Orice copil are nevoie de un corp sănătos și solid, iar bazele se pun mai ales în primul an de viață. Am pornit în călătoria mea în kinetoterapie în 2015, după finalizarea studiilor de licență și master în recuperare somato-funcțională.</p>
+                <p>Am practicat atât în România cât și în Franța. Sunt pasionată de meseria mea și lucrul cu copiii este împlinitor și satisfăcător pentru mine!</p>
+            </div>
+            <div class="hero-image">
+                <img src="/assets/img/mihaela-terapeut.png" alt="Mihaela - Terapeut">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="servicii">
+    <div class="container">
+        <h2 class="mb-40">Serviciile noastre</h2>
+        <div class="services-grid">
+            <!-- Evaluare -->
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/assets/img/evaluare.png" alt="Evaluare">
+                </div>
+                <div class="service-content">
+                    <h3>Evaluare</h3>
+                    <p>Identificăm eventualele abateri de la dezvoltarea normală și stabilim un program individualizat de recuperare, adaptat nevoilor specifice ale copilului.</p>
+                    <a href="/servicii" class="service-link">Citește mai mult <span class="service-arrow">›</span></a>
+                </div>
+            </div>
+            <!-- Kinetoterapie -->
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/assets/img/kinetoterapie.png" alt="Kinetoterapie">
+                </div>
+                <div class="service-content">
+                    <h3>Kinetoterapie</h3>
+                    <p>Folosim mișcarea pentru a stimula dezvoltarea motorie corectă, a corecta deficiențe sau a recupera funcții pierdute — mult mai mult decât o simplă gimnastică.</p>
+                    <a href="/kinetoterapie" class="service-link">Citește mai mult <span class="service-arrow">›</span></a>
+                </div>
+            </div>
+            <!-- Terapie Manuala -->
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/assets/img/terapie-manuala.png" alt="Terapia Manuală" class="detail-hero-img">
+                </div>
+                <div class="service-content">
+                    <h3>Terapie manuală</h3>
+                    <p>Tratament blând, bazat pe atingere, pentru identificarea și corectarea tensiunilor musculare sau articulare apărute în timpul sarcinii sau la naștere.</p>
+                    <a href="/terapie-manuala" class="service-link">Citește mai mult <span class="service-arrow">›</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="pareri" class="section-testimonials">
+    <div class="container">
+        <h2 class="mb-40">Părerile părințiilor</h2>
+        <div class="testimonials-grid">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+                <span class="testimonial-quote-icon">❝</span>
+                <p class="testimonial-text">Mihaela a observat lucruri pe care noi le ignorasem de luni de zile. După 6 ședințe, Andrei a făcut primii pași singur. Nu am cuvinte.</p>
+                <div class="testimonial-footer">
+                    <div class="testimonial-avatar">MD</div>
+                    <div class="testimonial-info">
+                        <span class="testimonial-name">Maria D.</span>
+                        <span class="testimonial-tag">Întârziere motorie · 2 ani</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+                <span class="testimonial-quote-icon">❝</span>
+                <p class="testimonial-text">Ne-a explicat exact ce face și de ce, la fiecare pas. Am plecat de la fiecare ședință cu exerciții clare și cu încrederea că suntem pe drumul bun.</p>
+                <div class="testimonial-footer">
+                    <div class="testimonial-avatar">AP</div>
+                    <div class="testimonial-info">
+                        <span class="testimonial-name">Alexandru P.</span>
+                        <span class="testimonial-tag">Recuperare post-operatorie · 5 ani</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+                <span class="testimonial-quote-icon">❝</span>
+                <p class="testimonial-text">Nu ne-am simțit niciodată grăbiți sau tratați ca pe un număr. Îi pasă cu adevărat de progresul copilului, și asta se simte din prima ședință.</p>
+                <div class="testimonial-footer">
+                    <div class="testimonial-avatar">EM</div>
+                    <div class="testimonial-info">
+                        <span class="testimonial-name">Elena M.</span>
+                        <span class="testimonial-tag">Tonus muscular scăzut · 3 ani</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include "partials/contact-cta.njk" %}

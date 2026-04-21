@@ -116,8 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const toggleMenu = () => {
             menuToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
-            navOverlay.classList.toggle('active');
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            const isActive = navMenu.classList.contains('active');
+            document.body.style.overflow = isActive ? 'hidden' : '';
+            document.body.classList.toggle('menu-open', isActive);
         };
 
         menuToggle.addEventListener('click', toggleMenu);

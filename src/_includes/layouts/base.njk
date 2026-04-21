@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} | PhysioBaby</title>
-    <meta name="description" content="Kinetoterapie pediatrică în București. Ajutăm copiii să crească armonios.">
+    <title>{{ title }} | PhysioBaby - Kinetoterapie pediatrică</title>
+    <meta name="description" content="{{ description or 'Kinetoterapie pediatrică în București. Ajutăm copiii să crească armonios prin programe personalizate de recuperare.' }}">
+    
+    {% include "partials/schema.njk" %}
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

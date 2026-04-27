@@ -135,4 +135,89 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial call with a slight delay to allow CSS animations to start first
     setTimeout(handleScroll, 100); 
+
+    // =========================================
+    // GDPR WhatsApp Consent Modal
+    // =========================================
+    const GDPR_SESSION_KEY = 'physiobabyGdprConsent';
+
+    const gdprModal    = document.getElementById('gdpr-modal');
+    const gdprCheckbox = document.getElementById('gdpr-consent-checkbox');
+    const gdprConfirm  = document.getElementById('gdpr-confirm-btn');
+    const gdprCancel   = document.getElementById('gdpr-cancel-btn');
+    const gdprWarning  = document.getElementById('gdpr-warning');
+    const gdprBackdrop = gdprModal ? gdprModal.querySelector('.gdpr-modal-backdrop') : null;
+
+    let pendingWhatsAppHref = null;
+
+    /** Opens the GDPR modal and locks body scroll. */
+    function openGdprModal() {
+        gdprModal.removeAttribute('hidden');
+        document.body.style.overflow = 'hidden';
+        // Delay focus to allow animation to start
+        setTimeout(() => gdprCheckbox.focus(), 150);
+    }
+
+    /** Closes the GDPR modal, resets state, and restores scroll. */
+    function closeGdprModal() {
+        gdprModal.setAttribute('hidden', '');
+        document.body.style.overflow = '';
+        pendingWhatsAppHref = null;
+        // Reset for next open
+        gdprCheckbox.checked = false;
+        gdprWarning.setAttribute('hidden', '');
+    }
+
+    if (gdprModal) {
+        // Intercept ALL WhatsApp link clicks via event delegation
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[href*="wa.me"], a[href*="whatsapp.com/send"]');
+            if (!link) return;
+
+            e.preventDefault();
+            pendingWhatsAppHref = link.href;
+
+            // Skip modal if consent was already given this session
+            if (sessionStorage.getItem(GDPR_SESSION_KEY) === 'true') {
+                window.open(pendingWhatsAppHref, '_blank');
+                pendingWhatsAppHref = null;
+                return;
+            }
+
+            openGdprModal();
+        });
+
+        // Confirm: validate checkbox, store consent, open WhatsApp
+        gdprConfirm.addEventListener('click', () => {
+            if (!gdprCheckbox.checked) {
+                gdprWarning.removeAttribute('hidden');
+                gdprCheckbox.focus();
+                return;
+            }
+            sessionStorage.setItem(GDPR_SESSION_KEY, 'true');
+            const href = pendingWhatsAppHref;
+            closeGdprModal();
+            window.open(href, '_blank');
+        });
+
+        // Cancel: close without action
+        gdprCancel.addEventListener('click', closeGdprModal);
+
+        // Backdrop click: close
+        gdprBackdrop.addEventListener('click', closeGdprModal);
+
+        // Escape key: close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !gdprModal.hasAttribute('hidden')) {
+                closeGdprModal();
+            }
+        });
+
+        // Hide warning as soon as user checks the box
+        gdprCheckbox.addEventListener('change', () => {
+            if (gdprCheckbox.checked) {
+                gdprWarning.setAttribute('hidden', '');
+            }
+        });
+    }
 });

@@ -2553,3 +2553,164 @@ footer {
   
   .btn { width: 100%; text-align: center; }
 }
+
+/* =========================================
+   GDPR WhatsApp Consent Modal
+   ========================================= */
+.gdpr-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.gdpr-modal[hidden] {
+  display: none;
+}
+
+.gdpr-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(16, 24, 40, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: gdprFadeIn 0.2s ease forwards;
+}
+
+@keyframes gdprFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes gdprSlideUp {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.gdpr-modal-card {
+  position: relative;
+  background: var(--white);
+  border-radius: 20px;
+  padding: 36px 32px 32px;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+  animation: gdprSlideUp 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gdpr-modal-icon {
+  width: 52px;
+  height: 52px;
+  background-color: var(--whatsapp);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-bottom: 4px;
+}
+
+.gdpr-modal-card h3 {
+  font-size: 20px;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.gdpr-modal-body {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.gdpr-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.5;
+  padding: 14px 16px;
+  background: var(--surface-subtle);
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+  transition: var(--transition-smooth);
+}
+
+.gdpr-checkbox-label:hover {
+  border-color: var(--accent);
+}
+
+.gdpr-checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.gdpr-checkbox-label a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.gdpr-warning {
+  font-size: 13px;
+  color: #d92d20;
+  margin: -8px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gdpr-warning[hidden] {
+  display: none;
+}
+
+.gdpr-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.gdpr-modal-actions .btn-accent {
+  width: 100%;
+  text-align: center;
+  padding: 14px 24px;
+}
+
+.gdpr-cancel-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  padding: 8px;
+  text-align: center;
+  border-radius: 8px;
+  transition: var(--transition-smooth);
+}
+
+.gdpr-cancel-btn:hover {
+  color: var(--text-main);
+  background: var(--surface-light);
+}
+
+@media (max-width: 480px) {
+  .gdpr-modal-card {
+    padding: 28px 20px 24px;
+  }
+}
+

@@ -1294,6 +1294,7 @@ footer {
   position: relative;
   overflow: hidden;
   margin-top: 60px;
+  margin-bottom: 60px;
 }
 
 .detail-summary-block h3 {
@@ -2486,11 +2487,6 @@ footer {
   .footer-bottom .flex-center {
     flex-direction: column;
     gap: 12px;
-  }
-
-  /* Specific Fixes for Detail Pages */
-  .detail-summary-block {
-    margin-bottom: 40px; /* Space from footer */
   }
 
   .detail-benefits-grid {

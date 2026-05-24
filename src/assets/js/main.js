@@ -220,4 +220,42 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // =========================================
+    // GDPR Google Maps Two-Click Solution
+    // =========================================
+    const MAP_CONSENT_KEY = 'googleMapsConsent';
+    const mapContainer = document.getElementById('map-iframe-container');
+    const mapConsentOverlay = document.getElementById('map-consent-overlay');
+    const mapConsentBtn = document.getElementById('map-consent-btn');
+
+    function loadGoogleMap() {
+        if (!mapContainer) return;
+        const src = mapContainer.getAttribute('data-src');
+        if (!src) return;
+
+        const iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.width = '100%';
+        iframe.height = '100%';
+        iframe.style.border = '0';
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute('loading', 'lazy');
+
+        // Clear the container (removes the overlay) and inject the iframe
+        mapContainer.innerHTML = '';
+        mapContainer.appendChild(iframe);
+    }
+
+    if (mapContainer && mapConsentOverlay && mapConsentBtn) {
+        // Check if consent was already given in this session
+        if (sessionStorage.getItem(MAP_CONSENT_KEY) === 'true') {
+            loadGoogleMap();
+        } else {
+            mapConsentBtn.addEventListener('click', () => {
+                sessionStorage.setItem(MAP_CONSENT_KEY, 'true');
+                loadGoogleMap();
+            });
+        }
+    }
 });

@@ -2864,3 +2864,95 @@ footer {
   }
 }
 
+/* -------------------------------------------------------
+   Legal Pages (Politică & Termeni)
+------------------------------------------------------- */
+
+/* "Ultima actualizare" — metadata, keeps it quiet */
+.legal-last-updated {
+  font-size: 13px;
+  color: var(--text-cta);
+  opacity: 0.6;
+  margin-top: 8px;
+  letter-spacing: 0.01em;
+}
+
+/* Main wrapper spacing */
+.legal-content {
+  padding-top: 20px;
+}
+
+/* Section h2 — clean, no excess weight */
+.legal-section-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--primary-dark);
+  font-family: var(--font-sans);
+  margin: 48px 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--surface);
+}
+
+/* Sub-section block (WhatsApp/Google etc.) */
+.legal-subsection {
+  margin: 20px 0 20px 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--surface);
+}
+
+.legal-subsection-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  margin: 0 0 6px;
+}
+
+/* Body paragraphs */
+.legal-body {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-body);
+  margin-bottom: 16px;
+}
+
+/* Bullet list */
+.legal-list {
+  list-style: none;
+  margin: 8px 0 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legal-list li {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-body);
+  padding-left: 20px;
+  position: relative;
+}
+
+.legal-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Inline code (sessionStorage etc.) */
+.legal-content code {
+  font-size: 13px;
+  background: var(--surface-subtle);
+  color: var(--primary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+}
+

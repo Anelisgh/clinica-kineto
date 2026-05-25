@@ -2868,6 +2868,39 @@ footer {
    Legal Pages (Politică & Termeni)
 ------------------------------------------------------- */
 
+/* Custom compact header for legal pages to keep it balanced and readable */
+.legal-header {
+  padding: 80px 0 40px !important; /* Larger top padding to offset fixed navbar, keeping bottom compact */
+  border-bottom: 1px solid var(--surface-soft);
+}
+
+.legal-header .detail-title {
+  font-size: 32px !important;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: -0.8px;
+}
+
+@media (max-width: 991px) {
+  .legal-header {
+    padding: 80px 0 35px !important;
+  }
+  .legal-header .detail-title {
+    font-size: 28px !important;
+    letter-spacing: -0.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .legal-header {
+    padding: 100px 0 25px !important;
+  }
+  .legal-header .detail-title {
+    font-size: 24px !important;
+    letter-spacing: -0.3px;
+  }
+}
+
 /* "Ultima actualizare" — metadata, keeps it quiet */
 .legal-last-updated {
   font-size: 13px;

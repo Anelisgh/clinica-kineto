@@ -3273,3 +3273,14 @@ footer {
   font-family: 'Courier New', monospace;
 }
 
+@media (max-width: 768px) {
+  /* Dimensiunea logo-ului înainte de scroll pe telefon */
+  .navbar .logo img {
+    height: 38px; 
+  }
+  
+  /* Dimensiunea logo-ului după ce utilizatorul face scroll pe telefon */
+  .navbar.scrolled .logo img {
+    height: 32px; 
+  }
+}

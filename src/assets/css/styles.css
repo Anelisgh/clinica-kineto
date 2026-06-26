@@ -3283,4 +3283,17 @@ footer {
   .navbar.scrolled .logo img {
     height: 32px; 
   }
+  /* Previne cumularea padding-ului când un container-narrow este imbricat într-un container părinte */
+.container .container-narrow {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Forțează textele lungi (cum este adresa de email) să se rupă pe rândul următor pe ecranele mici */
+.contact-card-value {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+
 }

@@ -111,6 +111,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // 6b. Expandable Condition Items (Afectiuni Page)
+    const condToggles = document.querySelectorAll('.cond-toggle');
+    condToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', String(!isOpen));
+            const body = toggle.nextElementSibling;
+            if (body) {
+                body.classList.toggle('is-open', !isOpen);
+            }
+        });
+    });
+
     // Mobile Menu Toggle
     if (menuToggle && navMenu && navOverlay) {
         const toggleMenu = () => {

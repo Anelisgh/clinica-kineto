@@ -2201,6 +2201,11 @@ footer {
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   margin-bottom: 40px;
+  max-width: 784px;
+}
+
+.contact-info-grid.container-narrow {
+  padding: 0;
 }
 
 .contact-card {

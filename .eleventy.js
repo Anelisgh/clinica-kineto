@@ -8,7 +8,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(HtmlBasePlugin);
 
   return {
-    pathPrefix: "/clinica-kineto/",
     dir: {
       input: "src",
       output: "_site",

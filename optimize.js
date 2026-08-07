@@ -9,29 +9,26 @@ async function run() {
       const meta = await sharp(`${dir}/${file}`).metadata();
       let width = meta.width;
       
-      // Resize logic based on filename
+      // Resize logic based on filename (2x for retina)
       if (file.includes('intro-image')) {
-        width = Math.min(width, 1200);
+        width = Math.min(width, 1920);
       } else if (file.includes('mihaela')) {
-        width = Math.min(width, 500);
+        width = Math.min(width, 1000);
       } else if (file.includes('evaluare') || file.includes('kinetoterapie') || file.includes('terapie-manuala')) {
-        width = Math.min(width, 400);
+        width = Math.min(width, 800);
       } else if (file.includes('logo')) {
-        width = Math.min(width, 300);
+        width = Math.min(width, 600);
       }
       
       const outName = file.replace(/\.(png|webp)$/, '-opt.webp');
       
       await sharp(`${dir}/${file}`)
         .resize(width)
-        .webp({ quality: 80 })
+        .webp({ quality: 95 })
         .toFile(`${dir}/${outName}`);
         
       const newMeta = await sharp(`${dir}/${outName}`).metadata();
       console.log(`${file} -> ${outName} (${newMeta.width}x${newMeta.height})`);
-      
-      // Replace original with opt (optional, let's keep original for backup and overwrite original)
-      // We will overwrite the original in place or use the new names
     }
   }
 }

@@ -66,6 +66,7 @@ ul {
 
 img {
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -957,7 +958,7 @@ footer {
 }
 
 .hero-intro-bg {
-  background-image: url('http://localhost:3845/assets/843c8380ffc6594506df93c75bf2ea6f4f80e75e.png');
+  background-image: url('http://localhost:3845/assets/843c8380ffc6594506df93c75bf2ea6f4f80e75e.webp');
 }
 
 .service-arrow {

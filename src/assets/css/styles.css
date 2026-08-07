@@ -106,6 +106,7 @@ header + .container,
 .contact-hero + .container,
 .pages-header + section .container,
 .pages-header + .container,
+.afectiuni-philosophy-strip + section .container,
 .intro-section .container,
 .hero-section .container {
   animation: fadeInSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;

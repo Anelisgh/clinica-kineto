@@ -14,6 +14,13 @@
     <!-- Preload key fonts for immediate text render (No FOUT/flicker) -->
     <link rel="preload" href="/assets/fonts/font-7.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/font-49.woff2" as="font" type="font/woff2" crossorigin>
+    {% if page.url == "/" or page.url == "" %}
+    <link rel="preload" href="/assets/img/intro-image.webp" as="image" type="image/webp">
+    {% endif %}
+    {% if page.url == "/servicii/" or page.url == "/servicii" %}
+    <link rel="preload" href="/assets/img/evaluare-psihomotorie.png" as="image" type="image/png">
+    <link rel="preload" href="/assets/img/evaluare-musculo-scheletala.png" as="image" type="image/png">
+    {% endif %}
 
     <!-- Self-hosted Fonts (GDPR Compliant & High Performance) -->
     <link rel="stylesheet" href="/assets/css/fonts.css">

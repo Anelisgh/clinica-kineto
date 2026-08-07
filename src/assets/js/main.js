@@ -8,58 +8,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.querySelector('.nav-menu');
     const navOverlay = document.querySelector('.nav-overlay');
 
+    let ticking = false;
     const handleScroll = () => {
-        const scrollY = window.scrollY;
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
 
-        // Navbar scrolled state logic
-        if (navbar) {
-            if (scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        }
+                // Navbar scrolled state logic
+                if (navbar) {
+                    if (scrollY > 50) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                }
 
-        // Intro Parallax & Overlay Animation
-        if (introOverlay) {
-            // Calculate a scroll fraction (0 at the top, 1 when scrolled a full screen down)
-            const scrollFraction = Math.min(scrollY / window.innerHeight, 1);
+                // Intro Parallax & Overlay Animation (Desktop only)
+                if (introOverlay && window.innerWidth > 768) {
+                    const scrollFraction = Math.min(scrollY / window.innerHeight, 1);
+                    const baseOpacity = 0.3;
+                    const newOpacity = baseOpacity + (scrollFraction * 0.5);
 
-            // 1. Overlay Animation: Darken slightly and add a blur effect as you scroll down
-            const baseOpacity = 0.3;
-            const newOpacity = baseOpacity + (scrollFraction * 0.5); // goes from 0.3 to 0.8
-            const blurAmount = scrollFraction * 8; // goes from 0px to 8px
-            
-            introOverlay.style.background = `rgba(0, 0, 0, ${newOpacity})`;
-            introOverlay.style.backdropFilter = `blur(${blurAmount}px)`;
-            introOverlay.style.webkitBackdropFilter = `blur(${blurAmount}px)`; // Safari support
+                    introOverlay.style.opacity = newOpacity;
 
-            // 2. Content Animation: MODERN SKEW + DRIFT + FADE
-            if (introContent && scrollY > 0) {
-                // Calculate scroll fraction for effects
-                const scrollFraction = Math.min(scrollY / window.innerHeight, 1);
-                
-                // Drift: slides down and right
-                const driftX = scrollY * 0.15;
-                const driftY = scrollY * 0.4;
-                
-                // Skew: gives it a modern "weighty" feel on scroll
-                const skewY = Math.min(scrollY * 0.01, 5); 
+                    if (introContent && scrollY > 0) {
+                        const driftX = scrollY * 0.15;
+                        const driftY = scrollY * 0.4;
+                        const skewY = Math.min(scrollY * 0.01, 5); 
 
-                introContent.style.transform = `translateY(calc(-50% + ${driftY}px)) translateX(${driftX}px) skewY(${skewY}deg)`;
-                introContent.style.opacity = Math.max(1 - (scrollFraction * 1.6), 0);
-            } else if (introContent && scrollY === 0) {
-                // Reset to clean state (matching the CSS centering)
-                introContent.style.transform = 'translateY(-50%)';
-                introContent.style.opacity = '1';
-                introContent.style.filter = 'none';
-            }
+                        introContent.style.transform = `translate3d(${driftX}px, calc(-50% + ${driftY}px), 0) skewY(${skewY}deg)`;
+                        introContent.style.opacity = Math.max(1 - (scrollFraction * 1.6), 0);
+                    } else if (introContent && scrollY === 0) {
+                        introContent.style.transform = 'translateY(-50%)';
+                        introContent.style.opacity = '1';
+                    }
 
-            // 3. Background Parallax: Move the background down slightly slower than scroll speed
-            if (introBg) {
-                // Combining parallax translateY with a subtle initial scale
-                introBg.style.transform = `scale(1.05) translateY(${scrollY * 0.15}px)`; 
-            }
+                    if (introBg) {
+                        introBg.style.transform = `translate3d(0, ${scrollY * 0.15}px, 0) scale(1.05)`; 
+                    }
+                }
+
+                ticking = false;
+            });
+            ticking = true;
         }
     };
 

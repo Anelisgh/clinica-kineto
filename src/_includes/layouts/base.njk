@@ -11,10 +11,12 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/assets/img/icon-p.png">
     
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&family=Playfair+Display+SC&display=swap" rel="stylesheet">
+    <!-- Preload key fonts for immediate text render (No FOUT/flicker) -->
+    <link rel="preload" href="/assets/fonts/font-7.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/font-49.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Self-hosted Fonts (GDPR Compliant & High Performance) -->
+    <link rel="stylesheet" href="/assets/css/fonts.css">
     
     <!-- Global CSS -->
     <link rel="stylesheet" href="/assets/css/styles.css">

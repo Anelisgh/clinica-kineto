@@ -146,8 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initial call with a slight delay to allow CSS animations to start first
-    setTimeout(handleScroll, 100); 
+    // Initial call to set navbar/scroll state
+    handleScroll(); 
 
     // =========================================
     // GDPR WhatsApp Consent Modal

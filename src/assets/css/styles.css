@@ -76,15 +76,39 @@ section {
   background-color: var(--white);
 }
 
+@keyframes fadeInSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 section .container {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: translateY(30px);
+  transition: opacity 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 section.revealed .container {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Smooth CSS entrance animation for top-of-page elements for instant LCP + silky UX */
+header .container,
+section:first-of-type .container,
+header + section .container,
+header + .container,
+.contact-hero + .container,
+.pages-header + section .container,
+.pages-header + .container,
+.intro-section .container,
+.hero-section .container {
+  animation: fadeInSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .container {
@@ -187,27 +211,25 @@ section.revealed .container {
   top: 0;
   left: 0;
   width: 100%;
-  height: 72px;
-  background: rgba(255, 255, 255, 0.7);
+  height: 68px;
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   z-index: 1000;
   display: flex;
   align-items: center;
-  transition: var(--transition-smooth);
-  animation: slideDownFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transform: translateZ(0); /* Sharp text */
 }
 
 /* Scrolled state for navbar */
 .navbar.scrolled {
-  height: 64px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(204, 231, 221, 0.3);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(204, 231, 221, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .nav-container {
@@ -228,15 +250,9 @@ section.revealed .container {
 
 /* Navbar Logo */
 .navbar .logo img {
-  height: 50px;
+  height: 46px;
   width: auto;
   object-fit: contain;
-  transition: var(--transition-smooth);
-}
-
-/* Logo mai mic la scroll */
-.navbar.scrolled .logo img {
-  height: 42px;
 }
 
 /* Footer Logo */

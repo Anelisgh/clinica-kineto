@@ -1,6 +1,6 @@
 const { HtmlBasePlugin } = require("@11ty/eleventy");
 
-module.exports = function(eleventyConfig) {
+module.exports = function (eleventyConfig) {
   // Passthrough Copy
   eleventyConfig.addPassthroughCopy("src/assets");
 

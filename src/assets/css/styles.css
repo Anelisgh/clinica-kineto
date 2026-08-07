@@ -22,7 +22,7 @@
   --text-main: #101828;
   --text-body: #4a5565;
   --text-muted: #364153;
-  --text-cta: #62748e;
+  --text-cta: #3b4c63;
   
   --whatsapp: #25d366;
 
@@ -840,6 +840,17 @@ footer {
   color: var(--accent);
 }
 
+.footer-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.footer-info-header .footer-info-label {
+  margin-bottom: 0;
+}
+
 .footer-info-label {
   font-family: var(--font-sans);
   font-size: 11px;
@@ -848,6 +859,31 @@ footer {
   text-transform: uppercase;
   color: var(--primary);
   margin-bottom: 12px;
+}
+
+.footer-instagram-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  color: var(--white);
+  background-color: var(--accent);
+  transition: var(--transition-smooth);
+}
+
+.footer-instagram-link:hover,
+.footer-instagram-link:focus-visible {
+  color: var(--white);
+  background-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 91, 57, 0.25);
+}
+
+.footer-instagram-icon {
+  width: 18px;
+  height: 18px;
 }
 
 .footer-divider {
@@ -937,6 +973,8 @@ footer {
 
 .footer-bottom a {
   position: relative;
+  display: inline-block;
+  padding: 8px 6px;
   transition: var(--transition-smooth);
 }
 
@@ -1839,7 +1877,7 @@ footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
-  margin-bottom: 80px;
+  margin-bottom: 0;
 }
 
 .pricing-card-individual {
@@ -2288,6 +2326,109 @@ footer {
 .contact-card-note {
   font-size: 14px;
   color: var(--text-cta);
+}
+
+/* Instagram Trust Banner */
+.contact-instagram-banner {
+  display: block;
+  text-decoration: none;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.contact-instagram-banner-inner {
+  background: var(--white);
+  border: 0.8px solid #f1f5f9;
+  border-radius: 16px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  transition: var(--transition-smooth);
+}
+
+.contact-instagram-banner:hover .contact-instagram-banner-inner {
+  border-color: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 91, 57, 0.07);
+}
+
+.contact-instagram-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.contact-instagram-banner-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--surface-subtle);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: var(--transition-smooth);
+}
+
+.contact-instagram-banner-icon svg {
+  width: 22px;
+  height: 22px;
+  color: var(--primary);
+}
+
+.contact-instagram-banner:hover .contact-instagram-banner-icon {
+  background: var(--surface);
+  transform: scale(1.1);
+}
+
+.contact-instagram-banner-left h3 {
+  font-size: 17px;
+  font-family: var(--font-sans);
+  color: var(--text-main);
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.contact-instagram-banner-left p {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.4;
+}
+
+.btn-instagram-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface-subtle);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  transition: var(--transition-smooth);
+  white-space: nowrap;
+}
+
+.contact-instagram-banner:hover .btn-instagram-action {
+  background: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(0, 91, 57, 0.2);
+}
+
+@media (max-width: 640px) {
+  .contact-instagram-banner-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .btn-instagram-action {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* Map Section */
@@ -2795,8 +2936,20 @@ footer {
 }
 
 @media (max-width: 768px) {
-  section { padding: 40px 0; }
-  
+  section { padding: 32px 0; }  .mb-60 { margin-bottom: 28px !important; }
+  .mb-48 { margin-bottom: 24px !important; }
+  .mb-40 { margin-bottom: 20px !important; }
+  .package-cards-grid { margin-top: 16px !important; }
+  .preturi-grid { margin-bottom: 0 !important; }
+
+  .packages-container {
+    padding: 24px 0 40px 0 !important;
+  }
+
+  .packages-container .mb-60 {
+    margin-bottom: 12px !important;
+  }
+
   h1, .detail-title, .services-title { font-size: 32px !important; }
   h2, .detail-section-h2 { font-size: 24px !important; }
   h3, .detail-section-h3 { font-size: 18px !important; }
@@ -2816,29 +2969,51 @@ footer {
   }
 
   .contact-whatsapp-info {
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
+    flex-direction: column;
     text-align: center;
+    gap: 4px;
   }
 
-  /* Make arrow slightly smaller on mobile to fit nicely */
-  .contact-whatsapp-bar > svg {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-    opacity: 0.8;
+  .contact-whatsapp-bar > svg:last-child {
+    display: none;
+  }
+
+  .map-card {
+    padding-bottom: 0;
   }
 
   .map-iframe-container {
-    height: 300px;
+    height: 380px;
+  }
+
+  .map-consent-overlay {
+    padding: 20px 16px 80px 16px;
+  }
+
+  .map-consent-content {
+    gap: 12px;
+  }
+
+  .map-consent-text {
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .map-floating-link {
-    width: 90%;
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
     justify-content: center;
-    padding: 10px 16px;
+    padding: 12px 16px;
     font-size: 14px;
+    z-index: 10;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  .map-floating-link:hover {
+    transform: translateX(-50%) translateY(-2px);
   }
 
   .contact-final-cta {

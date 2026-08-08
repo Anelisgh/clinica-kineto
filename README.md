@@ -11,14 +11,14 @@ Toate fișierele sursă de conținut se găsesc în directorul `src/` și au ext
 1. [Fluxul de editare prin GitHub](#1-fluxul-de-editare-prin-github)
 2. [Gestionarea imaginilor (.webp)](#2-gestionarea-imaginilor-webp)
 3. [Date de Contact — Inventar complet](#3-date-de-contact--inventar-complet)
-4. [Elemente Globale (Header, Footer, Floating WhatsApp)](#4-elemente-globale-header-footer-floating-whatsapp)
+4. [Elemente Globale (Header, Footer, WhatsApp, Banner CTA)](#4-elemente-globale-header-footer-whatsapp-banner-cta)
 5. [Pagina Principală (index.njk)](#5-pagina-principală-indexnjk)
 6. [Pagina Servicii și paginile dedicate](#6-pagina-servicii-și-paginile-dedicate)
 7. [Pagina Afecțiuni (afectiuni.njk)](#7-pagina-afecțiuni-afectiuninjk)
 8. [Pagina Prețuri (preturi.njk)](#8-pagina-prețuri-preturinjk)
 9. [Pagina Contact (contact.njk)](#9-pagina-contact-contactnjk)
 10. [Tabel de Referință Rapidă](#10-tabel-de-referință-rapidă)
-11. [SEO & Marketing Digital](#11-seo--marketing-digital)
+11. [SEO](#11-seo)
 
 ---
 
@@ -54,16 +54,18 @@ src/assets/img/
 
 ### Harta resurselor media de pe site:
 
-| Fișier imagine | Amplasare / Rol |
-|---|---|
-| `intro-image.webp` | Imaginea de fundal din secțiunea Hero (Pagina Principală) |
-| `mihaela-terapeut.webp` | Poza de profil din secțiunea „Cine sunt" |
-| `evaluare.webp` | Cardul de Serviciu „Evaluare" (Homepage) |
-| `kinetoterapie.webp` | Cardul de Serviciu „Kinetoterapie" (Homepage) |
-| `terapie-manuala.webp` | Cardul de Serviciu „Terapie manuală" (Homepage) |
-| `evaluare-psihomotorie.webp` | Imaginea din pagina detaliată Evaluare Psihomotorie |
-| `evaluare-musculo-scheletala.webp` | Imaginea din pagina detaliată Evaluare Musculo-Scheletată |
-| `logo.webp` / `logo_navbar.webp` | Siglele din Footer și Navbar |
+| Fișier imagine | Amplasare exactă (Fișiere în care este utilizată) | Rol |
+|---|---|---|
+| `intro-image.webp` | `src/index.njk`<br>`src/_includes/layouts/base.njk` | Imaginea principală din secțiunea Hero (Homepage). Este și pre-încărcată din `base.njk` pentru viteză — nu e afișată de două ori, se descarcă mai rapid. |
+| `mihaela-terapeut.webp` | `src/index.njk`<br>`src/_includes/partials/schema.njk` | Poza de profil a Mihaelei din secțiunea "Cine sunt" (Homepage). URL-ul ei este referențiat și în `schema.njk` (fișierul tehnic de date pentru Google). |
+| `evaluare.webp` | `src/index.njk` | Imaginea pentru cardul general de "Evaluare" (Homepage). |
+| `kinetoterapie.webp` | `src/index.njk`<br>`src/servicii.njk`<br>`src/kinetoterapie.njk` | Imaginea pentru cardul "Kinetoterapie" pe Homepage, pag. Servicii și imaginea paginii dedicate. |
+| `terapie-manuala.webp` | `src/index.njk`<br>`src/servicii.njk`<br>`src/terapie-manuala.njk` | Imaginea pentru cardul "Terapie manuală" pe Homepage, pag. Servicii și imaginea paginii dedicate. |
+| `evaluare-psihomotorie.webp` | `src/servicii.njk`<br>`src/evaluare-psihomotorie.njk`<br>`src/_includes/layouts/base.njk` | Cardul "Evaluare psihomotorie" (pag. Servicii) și imaginea paginii dedicate. Pre-încărcată din `base.njk` când vizitezi pag. Servicii — optimizare de viteză. |
+| `evaluare-musculo-scheletala.webp` | `src/servicii.njk`<br>`src/evaluare-musculo-scheletala.njk`<br>`src/_includes/layouts/base.njk` | Cardul "Evaluare musculo-scheletală" (pag. Servicii) și imaginea paginii dedicate. Pre-încărcată din `base.njk` când vizitezi pag. Servicii — optimizare de viteză. |
+| `logo.webp` | `src/_includes/partials/footer.njk` | Sigla principală afișată în subsolul paginii (Footer). |
+| `logo_navbar.webp` | `src/_includes/partials/navbar.njk` | Sigla mică afișată în meniul de navigare de sus (Navbar). |
+| `icon-p.webp` | `src/_includes/layouts/base.njk` | Iconița site-ului (Favicon) care apare în tab-ul browser-ului. |
 
 ---
 
@@ -87,11 +89,15 @@ Datele de contact (telefon, email, adresă, linkuri WhatsApp) sunt **hardcodate*
 | **Adresă** | `src/_includes/partials/footer.njk` | Text în `<span class="footer-info-value">` |
 | **Adresă** | `src/contact.njk` | Apare de 2 ori (card + subtitlu hartă) |
 | **Adresă** (Schema.org SEO) | `src/_includes/partials/schema.njk` | `"streetAddress"`, `"postalCode"`, `"addressRegion"` |
-| **Adresă** (text legal) | `src/politica-confidentialitate.njk` | Apare de 2 ori în secțiunea introductivă |
-| **Adresă** (text legal) | `src/termeni-si-conditii.njk` | Apare în secțiunea introductivă |
+| **Adresă și Date Firmă** (CUI, SRL) | `src/politica-confidentialitate.njk` | Apar în secțiunea introductivă |
+| **Adresă și Date Firmă** (CUI, SRL) | `src/termeni-si-conditii.njk` | Apar în secțiunea introductivă |
+| **Data ultimei actualizări** | `src/politica-confidentialitate.njk` | `<p class="legal-last-updated">` |
+| **Data ultimei actualizări** | `src/termeni-si-conditii.njk` | `<p class="legal-last-updated">` |
 | **WhatsApp** (buton flotant) | `src/_includes/partials/floating-button.njk` | `phone=40726673431` |
 | **WhatsApp** (bara rapidă) | `src/contact.njk` | `phone=40726673431` |
 | **WhatsApp** (CTA final) | `src/contact.njk` | `phone=40726673431` |
+
+> **Notă juridică:** Dacă se schimbă datele oficiale (adresa sediului social, numele firmei, CUI-ul etc.), actualizează-le manual în documentele legale (Termeni & Condiții, Politica de Confidențialitate). Când editezi aceste fișiere, nu uita să schimbi și „Ultima actualizare:" din header-ul paginii.
 
 > **Notă schema.njk:** Acest fișier conține markup JSON-LD (structured data pentru Google). Este inclus automat pe **toate paginile** prin layout-ul `base.njk`. Actualizarea lui este importantă pentru indexarea corectă în motoarele de căutare.
 
@@ -106,7 +112,7 @@ Parametrul `&text=...` (mesajul pre-completat) rămâne nemodificat.
 
 ---
 
-## 4. Elemente Globale (Header, Footer, Floating WhatsApp)
+## 4. Elemente Globale (Header, Footer, WhatsApp, Banner CTA)
 
 Elementele comune tuturor paginilor sunt modularizate în folderul `src/_includes/partials/`.
 
@@ -126,6 +132,13 @@ Butonul verde fix din colțul ecranului conține linkul direct de WhatsApp:
 <a href="https://api.whatsapp.com/send?phone=40726673431&text=..." ...>
 ```
 * Pentru schimbarea numărului, modifică `40726673431` (format internațional fără `+` sau spații) în parametrul `phone=`.
+
+### 📍 Banner-ul de Contact (Call to Action)
+**Fișier:** `src/_includes/partials/contact-cta.njk`
+
+Este banner-ul global cu titlul „Copilul tău are nevoie de ajutor?" care apare pe mai multe pagini (ex: Servicii).
+* Pentru a schimba mesajul, modifică textul din etichetele `<h2>` și `<p>`.
+* Pentru a schimba textul butonului, modifică textul din `<a>`.
 
 ---
 
@@ -247,7 +260,7 @@ Modificările de text se fac în `<h3>` (întrebarea) și în `.faq-answer-inner
 
 ---
 
-## 11. SEO & Marketing Digital
+## 11. SEO
 
 ### Fundația tehnică
 
@@ -256,7 +269,7 @@ Site-ul a obținut scor **100/100 la categoria SEO în Lighthouse**. Asta însea
 Ce s-a implementat din punct de vedere SEO:
 - **Date structurate pentru Google** (Schema.org) — site-ul transmite automat către Google informații despre clinică: nume, adresă, telefon, program. Fișier: `src/_includes/partials/schema.njk`
 - **Titlu și descriere unice per pagină** — fiecare pagină are propriul Meta Title și Meta Description (detalii în secțiunea de mai jos)
-- **Imagini optimizate** — format WebP cu dimensiuni declarate explicit, astfel încât pagina nu „sare" în timp ce se încarcă
+- **Imagini optimizate** — format WebP cu dimensiuni declarate explicit, astfel încât pagina nu "sare" în timp ce se încarcă
 - **Fonturi găzduite local** — fonturile nu se încarcă de pe serverele Google, ci direct de pe site, eliminând o sursă de întârziere și o cerere externă
 - **Imaginea principală încărcată prioritar** — imaginea mare de pe homepage se încarcă prima, înainte de orice altceva, pentru o afișare instantă
 
@@ -294,5 +307,3 @@ Frontmatter-ul fiecărei pagini:
 | `src/terapie-manuala.njk` | Terapie manuală · București | Terapie manuală blândă în București. Corectăm tensiunile musculare și asimetriile posturale apărute la naștere. |
 | `src/evaluare-psihomotorie.njk` | Evaluare psihomotorie bebeluși · București | Evaluarea etapelor de dezvoltare psihomotorie și a reflexelor primitive pentru bebeluși (0-2 ani) la clinica PhysioBaby București. |
 | `src/evaluare-musculo-scheletala.njk` | Evaluare musculo-scheletală copii (2-15 ani) | Detectarea asimetriilor corporale și dezechilibrelor musculare prin testări amănunțite pentru copii și adolescenți în București. |
-
-*PhysioBaby — Kinetoterapie pediatrică București*
